@@ -1,0 +1,266 @@
+@import "tailwindcss";
+
+/* next-themes writes `class="dark"` / `class="light"` onto <html>.
+   Tailwind v4 needs to be told that's how dark mode is signalled. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ==========================================================================
+   DESIGN TOKENS
+   Dark is the default, so the dark palette lives on :root — that way the very
+   first paint (before next-themes runs) is already correct. `.light` overrides
+   it. Both palettes are checked for WCAG AA contrast.
+   ========================================================================== */
+:root {
+  /* Brand */
+  --brand: #ff2233;         /* 5.3:1 on --bg */
+  --brand-strong: #e8192c;
+  --brand-deep: #a50d1b;
+  --brand-soft: rgb(255 34 51 / 0.14);
+  --brand-line: rgb(255 34 51 / 0.3);
+
+  /* Surfaces */
+  --bg: #07070a;
+  --bg-alt: #0c0c11;
+  --surface: #131319;
+  --surface-2: #1b1b23;
+  --border: rgb(255 255 255 / 0.1);
+  --border-loud: rgb(255 255 255 / 0.18);
+
+  /* Text */
+  --fg: #f5f5f7;            /* 18.5:1 on --bg */
+  --fg-muted: #a9a9b8;      /* 8.4:1  on --bg */
+  --fg-dim: #8a8a99;        /* 5.6:1  on --bg */
+  --on-brand: #ffffff;
+
+  color-scheme: dark;
+}
+
+.light {
+  --brand: #c8102e;         /* 6.0:1 on white */
+  --brand-strong: #b00f1f;
+  --brand-deep: #8a0a18;
+  --brand-soft: rgb(200 16 46 / 0.09);
+  --brand-line: rgb(200 16 46 / 0.26);
+
+  --bg: #ffffff;
+  --bg-alt: #f6f6f8;
+  --surface: #ffffff;
+  --surface-2: #f1f1f4;
+  --border: rgb(10 10 15 / 0.13);
+  --border-loud: rgb(10 10 15 / 0.24);
+
+  --fg: #101016;            /* 18.9:1 on white */
+  --fg-muted: #4e4e5a;      /* 8.0:1  on white */
+  --fg-dim: #6b6b78;        /* 5.2:1  on white */
+  --on-brand: #ffffff;
+
+  color-scheme: light;
+}
+
+/* Map tokens onto Tailwind utilities: bg-surface, text-fg-muted, etc.
+   `inline` is required because the values reference other CSS variables. */
+@theme inline {
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-deep: var(--brand-deep);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-line: var(--brand-line);
+
+  --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--border);
+  --color-line-loud: var(--border-loud);
+
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-dim: var(--fg-dim);
+  --color-on-brand: var(--on-brand);
+
+  --font-display: var(--font-big-shoulders), "Arial Narrow", sans-serif;
+  --font-arcade: var(--font-press-start), "Courier New", monospace;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 14px;
+  --radius-card-lg: 22px;
+
+  --ease-brand: cubic-bezier(0.22, 0.68, 0.36, 1);
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Keep anchored headings clear of the sticky header. */
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    transition: background-color 0.35s var(--ease-brand),
+                color 0.35s var(--ease-brand);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    line-height: 0.96;
+    text-transform: uppercase;
+    letter-spacing: -0.005em;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--brand);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--brand);
+    color: var(--on-brand);
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-color: var(--brand) transparent;
+  }
+}
+
+/* ==========================================================================
+   UTILITIES
+   ========================================================================== */
+@utility text-balance-safe {
+  text-wrap: balance;
+}
+
+/* Diagonal slash motif from the club logo. */
+@utility slash-rule {
+  height: 5px;
+  border: 0;
+  background: repeating-linear-gradient(
+    115deg,
+    var(--brand) 0 16px,
+    transparent 16px 30px
+  );
+  opacity: 0.75;
+}
+
+/* Edge fade for the sponsor carousel. */
+@utility mask-fade-x {
+  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+}
+
+/* ==========================================================================
+   KEYFRAMES
+   ========================================================================== */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes riseIn {
+  from { transform: translateY(104%); }
+  to   { transform: translateY(0); }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-13px); }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(0.94); opacity: 0.16; }
+  50%      { transform: scale(1.06); opacity: 0.26; }
+}
+
+@keyframes pulse-ring {
+  0%, 100% { box-shadow: 0 0 0 3px var(--brand-soft); }
+  50%      { box-shadow: 0 0 0 8px transparent; }
+}
+
+.animate-marquee {
+  animation: marquee var(--marquee-duration, 34s) linear infinite;
+}
+.animate-bob {
+  animation: bob 5.5s var(--ease-brand) infinite;
+}
+.animate-breathe {
+  animation: breathe 6.5s var(--ease-brand) infinite;
+}
+.animate-pulse-ring {
+  animation: pulse-ring 2.4s var(--ease-brand) infinite;
+}
+
+/* Pause marquees on hover or keyboard focus. */
+.marquee-host:hover .animate-marquee,
+.marquee-host:focus-within .animate-marquee {
+  animation-play-state: paused;
+}
+
+/* ==========================================================================
+   SCROLL REVEAL
+   Default state is visible. The `.js` class is added by an inline script in the
+   layout before first paint, which is what opts the page into the animation —
+   so if scripts never run, nothing is left stranded at opacity 0.
+   ========================================================================== */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+.js .reveal.is-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.6s var(--ease-brand), transform 0.6s var(--ease-brand);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal,
+  .js .reveal.is-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   MOTION PREFERENCES
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  /* A paused marquee would hide most logos, so let the user scroll it instead. */
+  .marquee-host {
+    overflow-x: auto;
+  }
+  .animate-marquee {
+    animation: none !important;
+    width: auto !important;
+  }
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; color: #000; }
+}
