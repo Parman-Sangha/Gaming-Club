@@ -10,8 +10,13 @@ const bigShoulders = Big_Shoulders({
   weight: ["600", "700", "800"],
   variable: "--font-big-shoulders",
   display: "swap",
-  // Next has no metric overrides for this face, so it cannot synthesise a
-  // matched fallback. The theme declares Arial Narrow instead.
+  // Google renamed this family from "Big Shoulders Display" to "Big Shoulders".
+  // next/font exposes the new name, but Next's capsize metrics table still only
+  // has the old `bigShouldersDisplay` key, so the lookup misses and the build
+  // logs "Failed to find font override values". Harmless — the font loads fine;
+  // Next just can't synthesise a size-adjusted fallback, so headings may shift
+  // slightly while the webfont loads. Opting out explicitly, though Next logs
+  // the warning regardless. The theme declares Arial Narrow as the fallback.
   adjustFontFallback: false,
 });
 
