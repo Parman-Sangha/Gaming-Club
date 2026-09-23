@@ -27,10 +27,6 @@ export function Sponsors() {
               aria-hidden
               className="pointer-events-none absolute inset-0 bg-[linear-gradient(112deg,var(--brand-soft)_0%,transparent_46%)]"
             />
-            <span className="absolute top-0 right-0 origin-center translate-x-[26%] translate-y-[52%] rotate-[38deg] bg-brand px-10 py-2 font-arcade text-[0.5rem] tracking-[0.14em] text-on-brand shadow-[0_2px_8px_rgb(0_0_0/0.3)]">
-              HEADLINE
-            </span>
-
             <div className="relative grid place-items-center rounded-[14px] bg-surface-2 p-5 shadow-[inset_0_0_0_1px_var(--border)] transition-transform duration-300 ease-brand group-hover:scale-[1.025] sm:p-7">
               <Image
                 src={headlineSponsor.logo}
@@ -43,6 +39,9 @@ export function Sponsors() {
             </div>
 
             <div className="relative">
+              <p className="mb-2 font-arcade text-[0.5rem] tracking-[0.14em] text-brand uppercase">
+                Headline sponsor
+              </p>
               <h3 className="mb-2.5 text-[clamp(1.6rem,3.2vw,2.3rem)]">
                 {headlineSponsor.name}
               </h3>
@@ -103,9 +102,6 @@ function SponsorCarousel() {
               {...(i >= sponsors.length ? { "aria-hidden": true, tabIndex: -1 } : {})}
               className="group relative grid h-30 w-[clamp(192px,22vw,244px)] shrink-0 place-items-center overflow-hidden rounded-[14px] bg-surface px-5 py-4 shadow-[inset_0_0_0_1px_var(--border)] transition-[transform,box-shadow] duration-300 ease-brand hover:-translate-y-1.5 hover:shadow-[inset_0_0_0_1px_var(--brand-line),0_10px_30px_rgb(0_0_0/0.28)]"
             >
-              <span className="absolute top-2 left-3 font-arcade text-[0.38rem] tracking-[0.1em] text-fg-dim uppercase">
-                {sponsor.tier}
-              </span>
               <span
                 aria-hidden
                 className="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-brand transition-transform duration-300 ease-brand group-hover:scale-x-100"

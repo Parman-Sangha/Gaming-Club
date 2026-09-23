@@ -51,16 +51,3 @@ export const stats: Stat[] = [
   { value: 1, label: "Very Red T-Rex" },
 ];
 
-/** Scrolling ticker phrases between the hero and the sponsors section. */
-export const tickerPhrases: string[] = [
-  "Console",
-  "PC",
-  "Handheld",
-  "Retro",
-  "Tabletop",
-  "Fighting Games",
-  "Card Games",
-  "Speedruns",
-  "Co-op Nights",
-  "Everyone Welcome",
-];

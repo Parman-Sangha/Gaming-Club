@@ -139,25 +139,6 @@
   }
 }
 
-/* ==========================================================================
-   UTILITIES
-   ========================================================================== */
-@utility text-balance-safe {
-  text-wrap: balance;
-}
-
-/* Diagonal slash motif from the club logo. */
-@utility slash-rule {
-  height: 5px;
-  border: 0;
-  background: repeating-linear-gradient(
-    115deg,
-    var(--brand) 0 16px,
-    transparent 16px 30px
-  );
-  opacity: 0.75;
-}
-
 /* Edge fade for the sponsor carousel. */
 @utility mask-fade-x {
   mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
@@ -173,37 +154,8 @@
   }
 }
 
-@keyframes riseIn {
-  from { transform: translateY(104%); }
-  to   { transform: translateY(0); }
-}
-
-@keyframes bob {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-13px); }
-}
-
-@keyframes breathe {
-  0%, 100% { transform: scale(0.94); opacity: 0.16; }
-  50%      { transform: scale(1.06); opacity: 0.26; }
-}
-
-@keyframes pulse-ring {
-  0%, 100% { box-shadow: 0 0 0 3px var(--brand-soft); }
-  50%      { box-shadow: 0 0 0 8px transparent; }
-}
-
 .animate-marquee {
   animation: marquee var(--marquee-duration, 34s) linear infinite;
-}
-.animate-bob {
-  animation: bob 5.5s var(--ease-brand) infinite;
-}
-.animate-breathe {
-  animation: breathe 6.5s var(--ease-brand) infinite;
-}
-.animate-pulse-ring {
-  animation: pulse-ring 2.4s var(--ease-brand) infinite;
 }
 
 /* Pause marquees on hover or keyboard focus. */

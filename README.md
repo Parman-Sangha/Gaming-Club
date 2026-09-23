@@ -122,11 +122,19 @@ create a free endpoint at [formspree.io](https://formspree.io) and set it in
 formEndpoint: "https://formspree.io/f/xxxxxxxx",
 ```
 
-**Logo**
+**Logo** — done
 
-`src/components/ui/logo.tsx` is a hand-drawn stand-in for the club's T-rex
-mascot. Replace the paths with the official artwork, but keep it as inline SVG
-— the cabinet uses `currentColor` so it adapts between light and dark themes.
+The club's real pixel-art logo is in place. `brand/logo-original.png` is the
+untouched source; `public/logo.png` is what the site uses, and differs in two
+ways: the empty margin is trimmed, and the T-rex's open mouth is filled with
+the sprite's dark outline colour.
+
+That last part matters. The mouth was transparent in the original, which looks
+white on paper but becomes a black void on the dark theme. If you re-export the
+logo, either fill the mouth in the source file or re-apply that patch.
+
+The sprite renders with `image-rendering: pixelated` so it keeps hard pixel
+edges when scaled rather than being smoothed.
 
 ---
 

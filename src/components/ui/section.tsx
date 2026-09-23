@@ -95,17 +95,3 @@ export function SectionHead({
   );
 }
 
-/** Decorative diagonal stripes echoing the logo's slash accents. */
-export function Slashes({ className }: { className?: string }) {
-  return (
-    <div
-      aria-hidden
-      className={cn("pointer-events-none absolute inset-0 overflow-hidden", className)}
-    >
-      <span className="absolute -top-[30%] left-[6%] h-[170%] w-[78px] -skew-x-[18deg] bg-brand opacity-[0.07]" />
-      <span className="absolute -top-[30%] left-[16%] h-[170%] w-[26px] -skew-x-[18deg] bg-brand opacity-[0.10]" />
-      <span className="absolute -top-[30%] right-[12%] h-[170%] w-[120px] -skew-x-[18deg] bg-brand opacity-[0.05]" />
-      <span className="absolute -top-[30%] right-[26%] h-[170%] w-[34px] -skew-x-[18deg] bg-brand opacity-[0.09]" />
-    </div>
-  );
-}

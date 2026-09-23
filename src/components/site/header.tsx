@@ -90,7 +90,7 @@ export function Header() {
           className="mr-auto flex items-center gap-2.5 text-fg"
           aria-label={`${club.name} — back to top`}
         >
-          <Logo className="h-10 w-11.5 shrink-0" />
+          <Logo className="w-11 shrink-0" />
           <span className="flex flex-col leading-none">
             <span className="font-display text-xl font-extrabold uppercase sm:text-[1.3rem]">
               UCalgary <span className="text-brand">Gaming</span>

@@ -31,7 +31,7 @@ export function Footer() {
           {/* Brand */}
           <div>
             <Link href="#top" className="mb-4 flex items-center gap-2.5 text-fg">
-              <Logo className="h-10 w-11.5 shrink-0" />
+              <Logo className="w-11 shrink-0" />
               <span className="font-display text-[1.3rem] font-extrabold uppercase leading-none">
                 UCalgary <span className="text-brand">Gaming</span>
               </span>

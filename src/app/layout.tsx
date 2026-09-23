@@ -52,9 +52,6 @@ export const metadata: Metadata = {
     title: `${club.name} — ${club.tagline}`,
     description: club.blurb,
   },
-  icons: {
-    icon: "/logo.svg",
-  },
 };
 
 export const viewport: Viewport = {
